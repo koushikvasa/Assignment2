@@ -1,0 +1,4 @@
+Name: Kavya Shivakumar 
+GNumber: G01520934 
+
+Part1 URL: http://kavya-staticwebsite.s3-website-us-east-1.amazonaws.com
