@@ -46,14 +46,11 @@ pipeline {
             steps {
                 script {
                     echo "Deploying to Kubernetes cluster: assignment-cluster in namespace: assignment-namespace"
-                    
-                    // Set the correct Kubernetes context
+
                     sh "kubectl config use-context assignment-cluster"
 
-                    // Update the image in the correct namespace and deployment
-                    sh "kubectl set image deployment/surverydeployment container-name=${env.IMAGE_NAME} --namespace=assignment-namespace"
-                    
-                    // Verify rollout status
+                    sh "kubectl set image deployment/surverydeployment container-0=${env.IMAGE_NAME} --namespace=assignment-namespace"
+
                     sh "kubectl rollout status deployment/surverydeployment --namespace=assignment-namespace"
                 }
             }
