@@ -1,4 +1,3 @@
-// Koushik, Kavya, Swaroop, Sehaj 
 pipeline {
     agent any
     environment {
@@ -15,11 +14,9 @@ pipeline {
             }
         }
 
-
-        stage('Building a docker image') {
+        stage('Building a Docker Image') {
             steps {
                 script {
-                    
                     // Securely handling Docker login
                     withCredentials([usernamePassword(credentialsId: 'docker-cred', 
                                                       usernameVariable: 'DOCKER_USER', 
@@ -36,22 +33,9 @@ pipeline {
                 }
             }
         }
-        
 
         stage('Push Image to DockerHub') {
             steps {
                 script {
                     sh "docker push ${env.IMAGE_NAME}"
-                }
-            }
-        }
-
-        stage('Deploy to Rancher') {
-            steps {
-                script {
-                    sh "kubectl set image deployment/surverydeployment container-0=${env.IMAGE_NAME}"
-                }
-            }
-        }
-    }
-}
+     
