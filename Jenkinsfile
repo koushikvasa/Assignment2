@@ -49,7 +49,7 @@ pipeline {
         stage('Deploy to Rancher') {
             steps {
                 script {
-                    sh "kubectl set image deployment/deployment-1 container-0=${env.IMAGE_NAME}"
+                    sh "kubectl set image deployment/surverydeployment container-0=${env.IMAGE_NAME}"
                 }
             }
         }
